@@ -72,7 +72,7 @@ avatar_cache_loader_finish (GiggleAvatarCacheLoader *loader,
 		g_simple_async_result_set_op_res_gpointer
 			(loader->result, g_object_ref (loader->pixbuf),
 			 g_object_unref);
-	} else {
+	} else if (error) {
 		g_simple_async_result_set_from_error (loader->result, error);
 		g_error_free (error);
 	}

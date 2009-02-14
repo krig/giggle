@@ -1386,21 +1386,21 @@ rev_list_view_cell_data_emblem_func (GtkCellLayout     *layout,
 					 priv->emblem_size);
 		gdk_pixbuf_fill (pixbuf, 0x00000000);
 
-		if (branch_list) {
+		if (branch_list && priv->emblem_branch) {
 			gdk_pixbuf_copy_area (priv->emblem_branch, 0, 0,
 					      priv->emblem_size, priv->emblem_size,
 					      pixbuf, x, 0);
 			x += priv->emblem_size;
 		}
 
-		if (remote_list) {
+		if (remote_list && priv->emblem_remote) {
 			gdk_pixbuf_copy_area (priv->emblem_remote, 0, 0,
 					      priv->emblem_size, priv->emblem_size,
 					      pixbuf, x, 0);
 			x += priv->emblem_size;
 		}
 
-		if (tag_list) {
+		if (tag_list && priv->emblem_tag) {
 			gdk_pixbuf_copy_area (priv->emblem_tag, 0, 0,
 					      priv->emblem_size, priv->emblem_size,
 					      pixbuf, x, 0);
