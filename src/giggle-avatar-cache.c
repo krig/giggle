@@ -324,10 +324,9 @@ giggle_avatar_cache_get_gravatar_uri (GiggleAvatarCache   *cache,
 	priv = GET_PRIV (cache);
 
 	if (priv->checksum) {
-		g_checksum_reset (priv->checksum);
-	} else {
-		priv->checksum = g_checksum_new (G_CHECKSUM_MD5);
+		g_checksum_free (priv->checksum);
 	}
+	priv->checksum = g_checksum_new (G_CHECKSUM_MD5);
 
 	g_checksum_update
 		(priv->checksum, (gpointer) gravatar_id,
