@@ -1,23 +1,29 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_PREREQ([2.59])
+AC_PREREQ(2.61)
 
 AC_INIT([giggle],[0.4.91],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=giggle])
+
+AC_SUBST([LIBGIGGLE_ABI],     [0:0:0])
+AC_SUBST([LIBGIGGLE_GIT_ABI], [0:0:0])
 
 AC_CONFIG_SRCDIR([src/giggle-main.c])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([-Wall -Werror])
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
-AM_DISABLE_STATIC
+AC_DISABLE_STATIC
+
 CXX=no
 F77=no
-AM_PROG_LIBTOOL
+
+LT_PREREQ([2.2])
+LT_INIT
 
 AC_ISC_POSIX
+
 AC_PROG_CC
-AM_PROG_CC_STDC
 AC_HEADER_STDC
 
 AM_PATH_GLIB_2_0
@@ -38,6 +44,10 @@ PKG_CHECK_MODULES(GIGGLE, [
         libglade-2.0      >  2.4
 ])
 
+dnl  -----------------------
+dnl | Evolution Data Server |-----------------------------------
+dnl  -----------------------
+
 AC_ARG_ENABLE([evolution-data-server],
               [AS_HELP_STRING([--disable-evolution-data-server],
                               [disable features using Evolution Data Server])],,
@@ -48,6 +58,25 @@ then
   PKG_CHECK_MODULES(EBOOK, [libebook-1.2])
   AC_DEFINE(ENABLE_EDS, 1, [Use features from libebook])
 fi
+
+AM_CONDITIONAL([ENABLE_EDS], [test "$enable_evolution_data_server" = "yes"])
+
+dnl  ------------------
+dnl | terminal support |-----------------------------------
+dnl  ------------------
+
+AC_ARG_ENABLE([terminal],
+              [AS_HELP_STRING([--disable-terminal],
+                              [disable features using vte terminal widget])],,
+              [enable_terminal=yes])
+
+if test "$enable_terminal" = "yes"
+then
+  PKG_CHECK_MODULES(VTE, [vte >= 0.17])
+  AC_DEFINE(ENABLE_VTE, 1, [Use features from vte])
+fi
+
+AM_CONDITIONAL([ENABLE_VTE], [test "$enable_terminal" = "yes"])
 
 dnl  ----------------------
 dnl | library requirements |-----------------------------------
@@ -137,8 +166,12 @@ dnl correct flags to aclocal.
 ACLOCAL_AMFLAGS="\${ACLOCAL_FLAGS}"
 AC_SUBST(ACLOCAL_AMFLAGS)
 
-AC_OUTPUT([
-        Makefile 
+SHAVE_INIT([.])
+
+AC_CONFIG_FILES([
+        shave
+        shave-libtool
+        Makefile
         data/Makefile
         libgiggle/Makefile
         libgiggle-git/Makefile
@@ -149,8 +182,11 @@ AC_OUTPUT([
         test/Makefile
 ])
 
+AC_OUTPUT
+
 echo
 echo "Prefix:                    $prefix"
 echo "GIT command path:          $GIT_COMMAND"
 echo "Use Evolution Data Server: $enable_evolution_data_server"
+echo "Use VTE terminal widget:   $enable_terminal"
 echo

@@ -28,13 +28,13 @@
 #include "giggle-helpers.h"
 #include "giggle-view-file.h"
 #include "giggle-view-history.h"
-#include "giggle-view-shell.h"
 #include "giggle-view-summary.h"
 
 #include <libgiggle/giggle-clipboard.h>
 #include <libgiggle/giggle-history.h>
 #include <libgiggle/giggle-plugin-manager.h>
 #include <libgiggle/giggle-searchable.h>
+#include <libgiggle/giggle-view-shell.h>
 
 #include <libgiggle-git/giggle-git-config.h>
 
@@ -48,7 +48,6 @@
 
 #define GET_PRIV(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GIGGLE_TYPE_WINDOW, GiggleWindowPriv))
 
-#define RECENT_FILES_GROUP		"giggle"
 #define RECENT_REPOS_PLACEHOLDER_PATH	"/ui/MainMenubar/ProjectMenu/RecentRepositories"
 
 #define HISTORY_GO_BACK_PATH		"/ui/MainToolbar/HistoryGoBack"
@@ -919,7 +918,7 @@ window_action_about_cb (GtkAction    *action,
 			       "Copyright \xc2\xa9 2007-2008 Imendio AB\n"
 			       "Copyright \xc2\xa9 2008 Mathias Hasselmann",
 			       "translator-credits", _("translator-credits"),
-			       "comments", _("A graphical frontend to the git directory tracker."),
+			       "comments", _("A graphical frontend to the git content tracker."),
 			       "website", PACKAGE_WEBSITE,
 			       "logo-icon-name", PACKAGE,
 			       "version", VERSION,
@@ -1030,7 +1029,6 @@ window_create_ui_manager (GiggleWindow *window)
 		  G_CALLBACK (window_action_delete_cb)
 		},
 
-		/* Toolbar items */
 		{ "HistoryGoBack", GTK_STOCK_GO_BACK, NULL,
 		  "<alt>Left", N_("Go backward in history"),
 		  G_CALLBACK (window_action_history_go_back)
@@ -1298,7 +1296,7 @@ window_recent_repositories_update (GiggleWindow *window)
 	for (l = recent_items; l && count < MAX_N_RECENT; l = l->next) {
 		info = l->data;
 
-		if (gtk_recent_info_has_group (info, RECENT_FILES_GROUP)) {
+		if (gtk_recent_info_has_group (info, PACKAGE)) {
 			if (!gtk_recent_info_exists (info))
 				continue;
 
@@ -1513,7 +1511,7 @@ window_directory_changed_cb (GiggleGit    *git,
 static void
 window_recent_repositories_add (GiggleWindow *window)
 {
-	static gchar     *groups[] = { RECENT_FILES_GROUP, NULL };
+	static gchar     *groups[] = { PACKAGE, NULL };
 	GiggleWindowPriv *priv;
 	GtkRecentData     data = { 0, };
 	const gchar      *repository;
@@ -1591,6 +1589,7 @@ giggle_window_init (GiggleWindow *window)
 
 	priv->view_shell = giggle_view_shell_new_with_ui (priv->ui_manager,
 							  "WindowViewShellActions");
+
 	priv->history_view = giggle_view_history_new (priv->ui_manager);
 	priv->file_view = giggle_view_file_new ();
 
@@ -1634,6 +1633,9 @@ giggle_window_init (GiggleWindow *window)
 #endif
 
 	priv->plugin_manager = giggle_plugin_manager_new ();
+
+	giggle_plugin_manager_add_widget (priv->plugin_manager,
+					  "ViewShell", priv->view_shell);
 
 	g_signal_connect (priv->plugin_manager, "plugin-added",
 			  G_CALLBACK (window_plugin_added_cb), window);
