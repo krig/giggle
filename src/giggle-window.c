@@ -20,12 +20,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <string.h>
-#include <stdlib.h>
-
+#include "config.h"
 #include "giggle-window.h"
 
 #include "eggfindbar.h"
@@ -36,16 +31,20 @@
 #include "giggle-view-shell.h"
 #include "giggle-view-summary.h"
 
-#include "libgiggle/giggle-clipboard.h"
-#include "libgiggle/giggle-configuration.h"
-#include "libgiggle/giggle-git.h"
-#include "libgiggle/giggle-history.h"
-#include "libgiggle/giggle-plugin-manager.h"
-#include "libgiggle/giggle-searchable.h"
+#include <libgiggle/giggle-clipboard.h>
+#include <libgiggle/giggle-history.h>
+#include <libgiggle/giggle-plugin-manager.h>
+#include <libgiggle/giggle-searchable.h>
+
+#include <libgiggle-git/giggle-git-config.h>
 
 #ifdef GDK_WINDOWING_QUARTZ
 #include "ige-mac-menu.h"
 #endif
+
+#include <glib/gi18n.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define GET_PRIV(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GIGGLE_TYPE_WINDOW, GiggleWindowPriv))
 
@@ -74,8 +73,8 @@ enum {
 
 typedef struct {
 	/* Model */
-	GiggleConfiguration *configuration;
 	GiggleGit           *git;
+	GiggleGitConfig     *configuration;
 	GtkUIManager        *ui_manager;
 
 	gint                 width;
@@ -298,9 +297,9 @@ window_dispose (GObject *object)
 }
 
 static void
-window_configuration_committed_cb (GiggleConfiguration *configuration,
-				   gboolean             success,
-				   gpointer             user_data)
+window_configuration_committed_cb (GiggleGitConfig *configuration,
+				   gboolean         success,
+				   gpointer         user_data)
 {
 	gtk_main_quit ();
 }
@@ -319,17 +318,17 @@ window_save_state (GiggleWindow *window)
 
 	maximized = gdk_window_get_state (GTK_WIDGET (window)->window) & GDK_WINDOW_STATE_MAXIMIZED;
 
-	giggle_configuration_set_field (priv->configuration,
-					CONFIG_FIELD_MAIN_WINDOW_GEOMETRY,
-					geometry);
+	giggle_git_config_set_field (priv->configuration,
+				     GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_GEOMETRY,
+				     geometry);
 
-	giggle_configuration_set_boolean_field (priv->configuration,
-						CONFIG_FIELD_MAIN_WINDOW_MAXIMIZED,
-						maximized);
+	giggle_git_config_set_boolean_field (priv->configuration,
+					     GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_MAXIMIZED,
+					     maximized);
 
-	giggle_configuration_commit (priv->configuration,
-				     window_configuration_committed_cb,
-				     window);
+	giggle_git_config_commit (priv->configuration,
+				  window_configuration_committed_cb,
+				  window);
 }
 
 static gboolean
@@ -607,10 +606,10 @@ window_bind_state (GiggleWindow *window)
 	priv = GET_PRIV (window);
 
 	if (!GTK_WIDGET_VISIBLE (window)) {
-		geometry = giggle_configuration_get_field
-			(priv->configuration, CONFIG_FIELD_MAIN_WINDOW_GEOMETRY);
-		maximized = giggle_configuration_get_boolean_field
-			(priv->configuration, CONFIG_FIELD_MAIN_WINDOW_MAXIMIZED);
+		geometry = giggle_git_config_get_field (priv->configuration,
+							GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_GEOMETRY);
+		maximized = giggle_git_config_get_boolean_field (priv->configuration,
+								 GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_MAXIMIZED);
 
 		if (!geometry) {
 			gtk_window_set_default_size (GTK_WINDOW (window), 700, 550);
@@ -627,17 +626,15 @@ window_bind_state (GiggleWindow *window)
 	show_graph_action = gtk_ui_manager_get_action
 		(priv->ui_manager, SHOW_GRAPH_PATH);
 
-	giggle_configuration_bind
-		(priv->configuration, CONFIG_FIELD_SHOW_GRAPH,
-		 G_OBJECT (show_graph_action), "active");
-
-	giggle_configuration_bind
-		(priv->configuration, CONFIG_FIELD_MAIN_WINDOW_VIEW,
-		 G_OBJECT (priv->view_shell), "view-name");
-
-	giggle_configuration_bind
-		(priv->configuration, CONFIG_FIELD_FILE_VIEW_PATH,
-		 G_OBJECT (priv->file_view), "path");
+	giggle_git_config_bind (priv->configuration,
+				GIGGLE_GIT_CONFIG_FIELD_SHOW_GRAPH,
+				G_OBJECT (show_graph_action), "active");
+	giggle_git_config_bind (priv->configuration,
+				GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_VIEW,
+				G_OBJECT (priv->view_shell), "view-name");
+	giggle_git_config_bind (priv->configuration,
+				GIGGLE_GIT_CONFIG_FIELD_FILE_VIEW_PATH,
+				G_OBJECT (priv->file_view), "path");
 
 	window_history_reset (window);
 	window_history_capture (window);
@@ -652,9 +649,9 @@ window_bind_state (GiggleWindow *window)
 }
 
 static void
-configuration_updated_cb (GiggleConfiguration *configuration,
-			  gboolean             success,
-			  gpointer             user_data)
+configuration_updated_cb (GiggleGitConfig *configuration,
+			  gboolean         success,
+			  gpointer         user_data)
 {
 	if (success)
 		window_bind_state (GIGGLE_WINDOW (user_data));
@@ -1509,8 +1506,8 @@ window_directory_changed_cb (GiggleGit    *git,
 	action_group = giggle_ui_manager_get_action_group (priv->ui_manager, "ProjectActions");
 	gtk_action_group_set_sensitive (action_group, TRUE);
 
-	giggle_configuration_update (priv->configuration,
-				     configuration_updated_cb, window);
+	giggle_git_config_update (priv->configuration,
+				  configuration_updated_cb, window);
 }
 
 static void
@@ -1586,13 +1583,14 @@ giggle_window_init (GiggleWindow *window)
 {
 	GiggleWindowPriv *priv = GET_PRIV (window);
 
-	priv->configuration = giggle_configuration_new ();
 	priv->git = giggle_git_get ();
+	priv->configuration = giggle_git_config_new ();
 
 	priv->content_vbox = gtk_vbox_new (FALSE, 0);
 	window_create_ui_manager (window);
 
-	priv->view_shell = giggle_view_shell_new_with_ui (priv->ui_manager);
+	priv->view_shell = giggle_view_shell_new_with_ui (priv->ui_manager,
+							  "WindowViewShellActions");
 	priv->history_view = giggle_view_history_new (priv->ui_manager);
 	priv->file_view = giggle_view_file_new ();
 
