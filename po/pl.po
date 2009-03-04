@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-23 21:37+0100\n"
+"POT-Creation-Date: 2009-03-04 18:40+0100\n"
 "PO-Revision-Date: 2009-02-23 21:47+0100\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: ../data/giggle.desktop.in.h:1
 msgid "Giggle"
@@ -63,11 +64,11 @@ msgstr "_E-mail:"
 msgid "Personal Details"
 msgstr "Informacje osobiste"
 
-#: ../plugins/giggle-view-terminal.c:102
+#: ../plugins/giggle-view-terminal.c:109
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../plugins/giggle-view-terminal.c:103
+#: ../plugins/giggle-view-terminal.c:110
 msgid "Issue git commands via terminal"
 msgstr "Wydawaj polecenia git w terminalu"
 
@@ -138,7 +139,7 @@ msgstr ""
 msgid "Changed files"
 msgstr "Zmienione pliki"
 
-#: ../src/giggle-diff-view.c:480
+#: ../src/giggle-diff-view.c:603
 #, c-format
 msgid ""
 "An error occurred when retrieving a diff:\n"
@@ -285,7 +286,7 @@ msgstr "Wpisz \"%s --help\", aby uzyskać więcej informacji.\n"
 
 #: ../src/giggle-remote-editor.c:154
 msgid "Click to add mapping..."
-msgstr "Dwukliknij aby dodać mapowanie..."
+msgstr "Kliknij dwukrotnie, aby dodać mapowanie..."
 
 #: ../src/giggle-remote-editor.c:180
 msgid "Branches"
@@ -309,21 +310,21 @@ msgstr "URL"
 
 #: ../src/giggle-remotes-view.c:289
 msgid "Double click to add remote..."
-msgstr "Dwukliknij aby dodać zdalne repozytorium..."
+msgstr "Kliknij dwukrotnie, aby dodać zdalne repozytorium..."
 
-#: ../src/giggle-revision-view.c:198 ../src/giggle-view-file.c:1147
+#: ../src/giggle-revision-view.c:198 ../src/giggle-view-file.c:1219
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/giggle-revision-view.c:202 ../src/giggle-view-file.c:1148
+#: ../src/giggle-revision-view.c:202 ../src/giggle-view-file.c:1220
 msgid "Committer:"
 msgstr "Zatwierdził:"
 
-#: ../src/giggle-revision-view.c:204 ../src/giggle-view-file.c:1149
+#: ../src/giggle-revision-view.c:204 ../src/giggle-view-file.c:1221
 msgid "Date:"
 msgstr "Data:"
 
-#: ../src/giggle-revision-view.c:205 ../src/giggle-view-file.c:1150
+#: ../src/giggle-revision-view.c:205 ../src/giggle-view-file.c:1222
 msgid "SHA:"
 msgstr "SHA:"
 
@@ -488,7 +489,7 @@ msgstr "Wybierz _rewizję"
 msgid "Select revision of selected line"
 msgstr "Pokazuję rewizję, w której została wprowadzona zaznaczona linia"
 
-#: ../src/giggle-view-file.c:832
+#: ../src/giggle-view-file.c:904
 #, c-format
 msgid ""
 "An error occurred when getting file ref:\n"
@@ -497,7 +498,7 @@ msgstr ""
 "Wystąpił błąd podczas zapisu do pliku:\n"
 "%s"
 
-#: ../src/giggle-view-file.c:903 ../src/giggle-view-history.c:250
+#: ../src/giggle-view-file.c:975 ../src/giggle-view-history.c:250
 #: ../src/giggle-view-history.c:345
 #, c-format
 msgid ""
@@ -507,15 +508,15 @@ msgstr ""
 "Wystąpił bład podczas pobierania listy rewizji:\n"
 "%s"
 
-#: ../src/giggle-view-file.c:1063
+#: ../src/giggle-view-file.c:1135
 msgid "Line Number:"
 msgstr "Numer linii:"
 
-#: ../src/giggle-view-file.c:1492
+#: ../src/giggle-view-file.c:1568
 msgid "_Browse"
 msgstr "_Przeglądaj"
 
-#: ../src/giggle-view-file.c:1493
+#: ../src/giggle-view-file.c:1569
 msgid "Browse the files of this project"
 msgstr "Przegląda pliki składające się na ten projekt"
 
@@ -724,7 +725,7 @@ msgstr "Utwórz okno _terminala"
 
 #: ../plugins/terminal-view.xml.h:2
 msgid "Create new tab in git terminal"
-msgstr "Utwórz nową zakładkę w oknie terminala"
+msgstr "Tworzy nową zakładkę w oknie terminala"
 
 #: ../plugins/terminal-view.xml.h:3
 msgid "Terminal window"
