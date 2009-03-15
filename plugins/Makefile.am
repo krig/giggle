@@ -53,6 +53,6 @@ libterminal_view_la_SOURCES = \
 	$(NULL)
 
 libterminal_view_la_CFLAGS = $(VTE_CFLAGS)
-libterminal_view_la_LIBADD = ../libgiggle-git/libgiggle-git.la $(VTE_LIBS)
+libterminal_view_la_LIBADD = ../libgiggle-git/libgiggle-git.la ../libgiggle/libgiggle.la $(VTE_LIBS) $(GIGGLE_LIBS)
 
 endif
