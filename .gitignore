@@ -22,6 +22,8 @@ shave
 shave-libtool
 .*.sw?
 *.o
+*.lo
+*.la
 .deps
 .libs
 .project
