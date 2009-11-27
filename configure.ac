@@ -72,7 +72,7 @@ AC_ARG_ENABLE([terminal],
 
 if test "$enable_terminal" = "yes"
 then
-  PKG_CHECK_MODULES(VTE, [vte >= 0.17])
+  PKG_CHECK_MODULES(VTE, [vte >= 0.16])
   AC_DEFINE(ENABLE_VTE, 1, [Use features from vte])
 fi
 
