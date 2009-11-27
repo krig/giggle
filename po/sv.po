@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Giggle 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-27 20:32+0200\n"
+"POT-Creation-Date: 2009-11-28 00:50+0100\n"
 "PO-Revision-Date: 2009-02-25 11:11+0100\n"
 "Last-Translator: Richard Hult <richard@imendio.com>\n"
 "Language-Team: sv <sv@li.org>\n"
@@ -36,47 +36,72 @@ msgid "Name:"
 msgstr "Namn:"
 
 #: ../data/main-window.glade.h:3
-#: ../src/giggle-personal-details-window.c:84
-msgid "Personal Details"
-msgstr "Personliga uppgifter"
-
-#: ../data/main-window.glade.h:4
 msgid "URL:"
 msgstr "URL:"
 
-#: ../data/main-window.glade.h:5
-msgid "_Email:"
-msgstr "_E-post:"
+#: ../libgiggle/giggle-plugin.c:528
+#, c-format
+msgid "Cannot find plugin description in '%s'"
+msgstr "Kunde inte hitta någon plugin-beskrivning i '%s'"
 
-#: ../data/main-window.glade.h:6
+#: ../plugins/giggle-personal-details-window.c:83
+msgid "There was an error setting the configuration"
+msgstr "Ett fel inträffade när konfigurationen ställdes in"
+
+#: ../plugins/giggle-personal-details-window.c:189
+msgid "There was an error getting the configuration"
+msgstr "Ett fel inträffade när konfiguration hämtades"
+
+#: ../plugins/giggle-personal-details-window.c:265
 msgid "_Name:"
 msgstr "_Namn:"
 
-#: ../src/eggfindbar.c:320
+#: ../plugins/giggle-personal-details-window.c:273
+msgid "_Email:"
+msgstr "_E-post:"
+
+#: ../plugins/giggle-personal-details-window.c:281
+msgid "External E_ditor:"
+msgstr "Extern E_ditor:"
+
+#: ../plugins/giggle-personal-details-window.c:295
+#: ../plugins/personal-details.xml.h:2
+msgid "Personal Details"
+msgstr "Personliga uppgifter"
+
+#: ../plugins/giggle-view-terminal.c:109
+msgid "_Terminal"
+msgstr ""
+
+#: ../plugins/giggle-view-terminal.c:110
+msgid "Issue git commands via terminal"
+msgstr "Ange git-kommandon via terminal"
+
+#: ../src/eggfindbar.c:307
 msgid "Find:"
 msgstr "Sök:"
 
-#: ../src/eggfindbar.c:329
+#: ../src/eggfindbar.c:316
 msgid "Find Previous"
 msgstr "Sök föregående"
 
-#: ../src/eggfindbar.c:332
+#: ../src/eggfindbar.c:319
 msgid "Find previous occurrence of the search string"
 msgstr "Sök föregående förekomst av söksträngen"
 
-#: ../src/eggfindbar.c:337
+#: ../src/eggfindbar.c:324
 msgid "Find Next"
 msgstr "Sök nästa"
 
-#: ../src/eggfindbar.c:340
+#: ../src/eggfindbar.c:327
 msgid "Find next occurrence of the search string"
 msgstr "Sök nästa förekomst av söksträngen"
 
-#: ../src/eggfindbar.c:348
+#: ../src/eggfindbar.c:335
 msgid "C_ase Sensitive"
 msgstr "_Skiftlägeskänslig"
 
-#: ../src/eggfindbar.c:351
+#: ../src/eggfindbar.c:339
 msgid "Toggle case sensitive search"
 msgstr "Växla skiftlägeskänslig sökning"
 
@@ -93,7 +118,7 @@ msgstr ""
 msgid "Authors:"
 msgstr "Upphovsmän:"
 
-#: ../src/giggle-branches-view.c:80
+#: ../src/giggle-branches-view.c:81
 #, c-format
 msgid ""
 "An error occurred when retrieving branches list:\n"
@@ -103,12 +128,11 @@ msgstr ""
 "%s"
 
 # Vet inte om man ska översätta till grenar eller använda lite fikonspråk...
-#: ../src/giggle-branches-view.c:146
+#: ../src/giggle-branches-view.c:147 ../src/giggle-revision-view.c:206
 msgid "Branches:"
 msgstr "Brancher:"
 
-#: ../src/giggle-diff-tree-view.c:105
-#: ../src/giggle-file-list.c:1518
+#: ../src/giggle-diff-tree-view.c:142 ../src/giggle-file-list.c:1703
 #, c-format
 msgid ""
 "An error occurred when retrieving different files list:\n"
@@ -117,11 +141,11 @@ msgstr ""
 "Ett fel inträffade när listan med ändrade filer hämtades:\n"
 "%s"
 
-#: ../src/giggle-diff-tree-view.c:139
+#: ../src/giggle-diff-tree-view.c:209
 msgid "Changed files"
 msgstr "Ändrade filer"
 
-#: ../src/giggle-diff-view.c:259
+#: ../src/giggle-diff-view.c:603
 #, c-format
 msgid ""
 "An error occurred when retrieving a diff:\n"
@@ -130,19 +154,19 @@ msgstr ""
 "Ett fel inträffade när diff hämtades:\n"
 "%s"
 
-#: ../src/giggle-diff-window.c:81
+#: ../src/giggle-diff-window.c:82
 msgid "Commit changes"
 msgstr "Committa ändringar"
 
-#: ../src/giggle-diff-window.c:103
+#: ../src/giggle-diff-window.c:104
 msgid "Revision log:"
 msgstr "Revisionslogg:"
 
-#: ../src/giggle-diff-window.c:133
+#: ../src/giggle-diff-window.c:134
 msgid "Co_mmit"
 msgstr "_Committa"
 
-#: ../src/giggle-diff-window.c:206
+#: ../src/giggle-diff-window.c:207
 #, c-format
 msgid ""
 "An error occurred when committing:\n"
@@ -151,31 +175,7 @@ msgstr ""
 "Ett fel inträffade under commit:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:168
-msgid "_Commit Changes"
-msgstr "_Committa ändringar"
-
-#: ../src/giggle-file-list.c:169
-msgid "A_dd file to repository"
-msgstr "_Lägg till fil i repot"
-
-#: ../src/giggle-file-list.c:170
-msgid "_Add to .gitignore"
-msgstr "_Lägg till i .gitignore"
-
-#: ../src/giggle-file-list.c:171
-msgid "_Remove from .gitignore"
-msgstr "_Ta bort från .gitignore"
-
-#: ../src/giggle-file-list.c:175
-msgid "_Show all files"
-msgstr "Visa _alla filer"
-
-#: ../src/giggle-file-list.c:314
-msgid "Project"
-msgstr "Projekt"
-
-#: ../src/giggle-file-list.c:649
+#: ../src/giggle-file-list.c:409
 #, c-format
 msgid ""
 "An error occurred when retrieving the file list:\n"
@@ -184,7 +184,7 @@ msgstr ""
 "Ett fel inträffade när fillistan hämtades:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:856
+#: ../src/giggle-file-list.c:793
 #, c-format
 msgid ""
 "An error occurred when adding a file to git:\n"
@@ -193,168 +193,334 @@ msgstr ""
 "Ett fel inträffade när en fil lades till i git:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:1144
+#: ../src/giggle-file-list.c:853 ../src/giggle-file-list.c:879
+#: ../src/giggle-rev-list-view.c:1184 ../src/giggle-rev-list-view.c:1215
+#, c-format
+msgid "Could not save the patch as %s"
+msgstr "Kunde inte spara patchen som %s"
+
+#: ../src/giggle-file-list.c:858 ../src/giggle-file-list.c:884
+#: ../src/giggle-rev-list-view.c:1192 ../src/giggle-rev-list-view.c:1220
+msgid "No error was given"
+msgstr "Inget felmeddelande gavs"
+
+#: ../src/giggle-file-list.c:905 ../src/giggle-rev-list-view.c:1246
+#, c-format
+msgid "Patch saved as %s"
+msgstr "Patch sparad som %s"
+
+#: ../src/giggle-file-list.c:909 ../src/giggle-rev-list-view.c:1250
+#, c-format
+msgid "Created in project directory"
+msgstr "Skapad i projektkatalogen"
+
+#: ../src/giggle-file-list.c:912 ../src/giggle-rev-list-view.c:1253
+#, c-format
+msgid "Created in directory %s"
+msgstr "Skapad i katalogen %s"
+
+#: ../src/giggle-file-list.c:947 ../src/giggle-rev-list-view.c:1306
+#, fuzzy
+msgid "Create Patch"
+msgstr "Skapa _patch"
+
+#: ../src/giggle-file-list.c:1050
 msgid "Delete glob pattern?"
 msgstr "Ta bort glob-mönster?"
 
-#: ../src/giggle-file-list.c:1147
-msgid "The selected file was shadowed by a glob pattern that may be hiding other files, delete it?"
+#: ../src/giggle-file-list.c:1053
+msgid ""
+"The selected file was shadowed by a glob pattern that may be hiding other "
+"files, delete it?"
+msgstr ""
+"Den valda filen doldes av ett glob-mönster som kan dölja andra filer. Ta "
+"bort det?"
+
+#: ../src/giggle-file-list.c:1449
+msgid "_Commit Changes"
+msgstr "_Committa ändringar"
+
+#: ../src/giggle-file-list.c:1451
+msgid "A_dd file to repository"
+msgstr "_Lägg till fil i repot"
+
+#: ../src/giggle-file-list.c:1452 ../src/giggle-rev-list-view.c:1660
+#, fuzzy
+msgid "Create _Patch"
+msgstr "Skapa _patch"
+
+#: ../src/giggle-file-list.c:1453
+msgid "_Add to .gitignore"
+msgstr "_Lägg till i .gitignore"
+
+#: ../src/giggle-file-list.c:1454
+msgid "_Remove from .gitignore"
+msgstr "_Ta bort från .gitignore"
+
+#: ../src/giggle-file-list.c:1458
+msgid "_Show all files"
+msgstr "Visa _alla filer"
+
+#: ../src/giggle-file-list.c:1499
+msgid "Project"
+msgstr "Projekt"
+
+#: ../src/giggle-main.c:35
+msgid "Show the diff window"
+msgstr "Visa diffvyn"
+
+#: ../src/giggle-main.c:39
+#, fuzzy
+msgid "Show version information and exit"
+msgstr "Visa Revisions_information och avsluta"
+
+#: ../src/giggle-main.c:63
+msgid "[DIRECTORY]"
 msgstr ""
 
-#: ../src/giggle-personal-details-window.c:127
-msgid "There was an error setting the configuration"
-msgstr "Ett fel inträffade när konfigurationen ställdes in"
+#: ../src/giggle-main.c:69
+#, c-format
+msgid "Report errors (in English, with LC_ALL=C) to <%s>."
+msgstr ""
 
-#: ../src/giggle-personal-details-window.c:180
-msgid "There was an error getting the configuration"
-msgstr "Ett fel inträffade när konfiguration hämtades"
+#: ../src/giggle-main.c:70
+msgid "Giggle is a graphical frontend for the git content tracker."
+msgstr "Giggle är ett grafiskt gränssnitt för versionshanteringssystemet git."
 
-#: ../src/giggle-remote-editor.c:157
-msgid "Double click to add mapping..."
+#: ../src/giggle-main.c:78
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Ange `%s --help' för ytterligare information.\n"
+
+#: ../src/giggle-remote-editor.c:154
+#, fuzzy
+msgid "Click to add mapping..."
 msgstr "Dubbelklicka för att lägga till mappning..."
 
-#: ../src/giggle-remote-editor.c:183
+#: ../src/giggle-remote-editor.c:180
 msgid "Branches"
 msgstr "Brancher"
 
-#: ../src/giggle-remote-editor.c:378
+#: ../src/giggle-remote-editor.c:375
 msgid "Unnamed"
 msgstr "Namnlös"
 
-# Vet inte vad vi ska kalla "remote".
-#: ../src/giggle-remotes-view.c:114
-msgid "Double click to add remote..."
-msgstr "Dubbelklicka för att lägga till remote..."
+#: ../src/giggle-remotes-view.c:265
+msgid "Icon"
+msgstr "Ikon"
 
-#: ../src/giggle-remotes-view.c:206
+#: ../src/giggle-remotes-view.c:271
 msgid "Name"
 msgstr "Namn"
 
-#: ../src/giggle-remotes-view.c:213
+#: ../src/giggle-remotes-view.c:276
 msgid "URL"
 msgstr "URL"
 
-#: ../src/giggle-revision-list.c:178
-msgid "Commit"
+# Vet inte vad vi ska kalla "remote".
+#: ../src/giggle-remotes-view.c:289
+msgid "Double click to add remote..."
+msgstr "Dubbelklicka för att lägga till remote..."
+
+#: ../src/giggle-revision-view.c:198 ../src/giggle-view-file.c:1219
+#, fuzzy
+msgid "Author:"
+msgstr "Upphovsmän:"
+
+#: ../src/giggle-revision-view.c:202 ../src/giggle-view-file.c:1220
+#, fuzzy
+msgid "Committer:"
 msgstr "Committa"
 
-#: ../src/giggle-revision-list.c:179
-msgid "Create _Branch"
-msgstr "Skapa _branch"
+#: ../src/giggle-revision-view.c:204 ../src/giggle-view-file.c:1221
+msgid "Date:"
+msgstr "Datum:"
 
-#: ../src/giggle-revision-list.c:180
-msgid "Create _Tag"
-msgstr "Skapa _tagg"
+#: ../src/giggle-revision-view.c:205 ../src/giggle-view-file.c:1222
+msgid "SHA:"
+msgstr "SHA:"
 
-#: ../src/giggle-revision-list.c:303
-msgid "Graph"
-msgstr "Graf"
+#: ../src/giggle-revision-view.c:224
+msgid "Change Log:"
+msgstr "Logg:"
 
-#: ../src/giggle-revision-list.c:324
-msgid "Short Log"
-msgstr "Kort logg"
+#: ../src/giggle-revision-view.c:507
+#, fuzzy
+msgid "_Details"
+msgstr "Information"
 
-#: ../src/giggle-revision-list.c:347
-msgid "Author"
-msgstr "Upphovsman"
+#: ../src/giggle-revision-view.c:508
+#, fuzzy
+msgid "Display revision details"
+msgstr "Redigera personliga uppgifter"
 
-#: ../src/giggle-revision-list.c:368
-msgid "Date"
-msgstr "Datum"
-
-#: ../src/giggle-revision-list.c:634
+#: ../src/giggle-rev-list-view.c:353
 #, c-format
 msgid "Delete branch \"%s\""
 msgstr "Ta bort branchen \"%s\""
 
-#: ../src/giggle-revision-list.c:637
+#: ../src/giggle-rev-list-view.c:356
 #, c-format
 msgid "Delete tag \"%s\""
 msgstr "Ta bort taggen \"%s\""
 
-#: ../src/giggle-revision-list.c:911
+#: ../src/giggle-rev-list-view.c:523
+#, fuzzy
+msgid "Branch"
+msgstr "Branch"
+
+#: ../src/giggle-rev-list-view.c:526
+msgid "Tag"
+msgstr "Tagg"
+
+#: ../src/giggle-rev-list-view.c:529
+msgid "Remote"
+msgstr ""
+
+#: ../src/giggle-rev-list-view.c:1074
+msgid "Enter branch name:"
+msgstr "Ange branchnamn:"
+
+#: ../src/giggle-rev-list-view.c:1125
+msgid "Enter tag name:"
+msgstr "Ange taggnamn:"
+
+#: ../src/giggle-rev-list-view.c:1186
+#, c-format
+msgid "Could not create patch"
+msgstr "Kunde inte skapa patch"
+
+#: ../src/giggle-rev-list-view.c:1447
 msgid "Uncommitted changes"
 msgstr "Ocommittade ändringar"
 
 #. TRANSLATORS: it's a strftime format string
-#: ../src/giggle-revision-list.c:969
+#: ../src/giggle-rev-list-view.c:1501
 msgid "%I:%M %p"
 msgstr "%H:%M"
 
 #. TRANSLATORS: it's a strftime format string
-#: ../src/giggle-revision-list.c:982
+#: ../src/giggle-rev-list-view.c:1514
 msgid "%a %I:%M %p"
 msgstr "%a %H:%M"
 
 #. TRANSLATORS: it's a strftime format string
-#: ../src/giggle-revision-list.c:994
+#: ../src/giggle-rev-list-view.c:1526
 msgid "%b %d %I:%M %p"
 msgstr "%b %d %H:%M"
 
 #. it's older
 #. TRANSLATORS: it's a strftime format string
-#: ../src/giggle-revision-list.c:999
+#: ../src/giggle-rev-list-view.c:1531
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: ../src/giggle-revision-list.c:1422
-msgid "Enter branch name:"
-msgstr "Ange branchnamn:"
+#: ../src/giggle-rev-list-view.c:1657
+msgid "Commit"
+msgstr "Committa"
 
-#: ../src/giggle-revision-list.c:1473
-msgid "Enter tag name:"
-msgstr "Ange taggnamn:"
+#: ../src/giggle-rev-list-view.c:1658
+msgid "Create _Branch"
+msgstr "Skapa _branch"
 
-#: ../src/giggle-revision-tooltip.c:261
-#: ../src/giggle-view-history.c:453
-msgid "Branch"
-msgid_plural "Branches"
-msgstr[0] "Branch"
-msgstr[1] "Brancher"
+#: ../src/giggle-rev-list-view.c:1659
+msgid "Create _Tag"
+msgstr "Skapa _tagg"
 
-#: ../src/giggle-revision-tooltip.c:262
-msgid "Tag"
-msgstr "Tagg"
+#: ../src/giggle-rev-list-view.c:1720
+msgid "Graph"
+msgstr "Graf"
 
-#: ../src/giggle-revision-tooltip.c:263
-msgid "Remote"
-msgstr ""
+#: ../src/giggle-rev-list-view.c:1738
+msgid "Short Log"
+msgstr "Kort logg"
 
-#: ../src/giggle-revision-view.c:121
-msgid "Date:"
-msgstr "Datum:"
+#: ../src/giggle-rev-list-view.c:1757
+msgid "Author"
+msgstr "Upphovsman"
 
-#: ../src/giggle-revision-view.c:139
-msgid "SHA:"
-msgstr "SHA:"
-
-#: ../src/giggle-revision-view.c:157
-msgid "Change Log:"
-msgstr "Logg:"
+#: ../src/giggle-rev-list-view.c:1774
+msgid "Date"
+msgstr "Datum"
 
 #: ../src/giggle-short-list.c:265
 msgid "Details"
 msgstr "Information"
 
-#: ../src/giggle-short-list.c:374
-msgid "Show all..."
+#: ../src/giggle-short-list.c:375
+#, fuzzy
+msgid "Show A_ll..."
 msgstr "Visa alla..."
 
-#. revision view
-#: ../src/giggle-view-file.c:131
-#: ../src/giggle-view-history.c:177
-msgid "Revision _information"
-msgstr "Revisions_information"
+#: ../src/giggle-view-diff.c:108
+#, fuzzy, c-format
+msgid "Change %d of %d"
+msgstr "Ändrade filer"
 
-#. diff view
-#: ../src/giggle-view-file.c:139
-#: ../src/giggle-view-history.c:343
-msgid "_Differences"
-msgstr "_Skillnader"
+#: ../src/giggle-view-diff.c:185
+msgid "_Previous Change"
+msgstr "Föregående ändring"
 
-#: ../src/giggle-view-file.c:189
-#: ../src/giggle-view-history.c:629
-#: ../src/giggle-view-history.c:724
+#: ../src/giggle-view-diff.c:185
+#, fuzzy
+msgid "View previous change"
+msgstr "Sök föregående"
+
+#: ../src/giggle-view-diff.c:189
+#, fuzzy
+msgid "_Next Change"
+msgstr "_Committa ändringar"
+
+#: ../src/giggle-view-diff.c:189
+#, fuzzy
+msgid "View next change"
+msgstr "Diffa aktuella ändringar"
+
+#: ../src/giggle-view-diff.c:349
+#, fuzzy
+msgid "_Changes"
+msgstr "_Committa ändringar"
+
+#: ../src/giggle-view-diff.c:350
+msgid "Browse a revision's changes"
+msgstr ""
+
+#: ../src/giggle-view-file.c:328
+msgid "_Goto Line Number"
+msgstr "_Gå till radnummer"
+
+#: ../src/giggle-view-file.c:329
+msgid "Highlight specified line number"
+msgstr "Highlighta valt radnummer"
+
+#: ../src/giggle-view-file.c:333
+#, fuzzy
+msgid "Show _Changes"
+msgstr "_Committa ändringar"
+
+#: ../src/giggle-view-file.c:334
+msgid "Show changes for selected revision"
+msgstr "Visa ändringarna för den valda revisionen"
+
+#: ../src/giggle-view-file.c:338
+msgid "Select _Revision"
+msgstr "Välj _Revision"
+
+#: ../src/giggle-view-file.c:339
+msgid "Select revision of selected line"
+msgstr "Välj revision för markerad rad"
+
+#: ../src/giggle-view-file.c:904
+#, fuzzy, c-format
+msgid ""
+"An error occurred when getting file ref:\n"
+"%s"
+msgstr ""
+"Ett fel inträffade under filsparande:\n"
+"%s"
+
+#: ../src/giggle-view-file.c:975 ../src/giggle-view-history.c:250
+#: ../src/giggle-view-history.c:345
 #, c-format
 msgid ""
 "An error occurred when getting the revisions list:\n"
@@ -363,160 +529,202 @@ msgstr ""
 "Ett fel inträffade när revisionslista hämtades:\n"
 "%s"
 
-#: ../src/giggle-view-summary.c:118
+#: ../src/giggle-view-file.c:1135
+msgid "Line Number:"
+msgstr "Radnummer:"
+
+#: ../src/giggle-view-file.c:1568
+msgid "_Browse"
+msgstr "_Bläddra"
+
+#: ../src/giggle-view-file.c:1569
+msgid "Browse the files of this project"
+msgstr "Bläddra bland filerna till detta projekt"
+
+#: ../src/giggle-view-history.c:834
+#, fuzzy
+msgid "_History"
+msgstr "Historik"
+
+#: ../src/giggle-view-history.c:835
+msgid "Browse the history of this project"
+msgstr "Bläddra i historiken till detta projekt"
+
+#: ../src/giggle-view-summary.c:117
 msgid "<b>Description:</b>"
 msgstr "<b>Beskrivning:</b>"
 
-#: ../src/giggle-view-summary.c:152
+#: ../src/giggle-view-summary.c:163
 msgid "<b>Remotes:</b>"
 msgstr "<b>Remotes:</b>"
 
-#: ../src/giggle-window.c:145
-msgid "_Compact Mode"
-msgstr "_Kompakt läge"
+#: ../src/giggle-view-summary.c:189
+#, fuzzy
+msgid "_Summary"
+msgstr "Sammanfattning"
 
-#: ../src/giggle-window.c:149
-msgid "Show Project _Tree"
-msgstr "Visa projekt_träd"
+#: ../src/giggle-view-summary.c:192
+#, fuzzy
+msgid "_Branches"
+msgstr "Brancher"
 
-#: ../src/giggle-window.c:153
-msgid "Show revision tree"
-msgstr "Visa projektträd"
+#: ../src/giggle-view-summary.c:195
+#, fuzzy
+msgid "_Authors"
+msgstr "Upphovsmän:"
 
-#: ../src/giggle-window.c:160
-msgid "_Project"
-msgstr "_Projekt"
+#: ../src/giggle-view-summary.c:198
+#, fuzzy
+msgid "_Remotes"
+msgstr "<b>Remotes:</b>"
 
-#: ../src/giggle-window.c:164
-msgid "_Edit"
-msgstr "_Redigera"
-
-#: ../src/giggle-window.c:168
-msgid "_Go"
-msgstr "_Gå"
-
-#: ../src/giggle-window.c:172
-msgid "_View"
-msgstr "_Visa"
-
-#: ../src/giggle-window.c:176
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: ../src/giggle-window.c:180
-msgid "_Open"
-msgstr "_Öppna"
-
-#: ../src/giggle-window.c:180
-msgid "Open a git repository"
-msgstr "Öppna ett GIT-repo"
-
-#: ../src/giggle-window.c:184
-msgid "_Save patch"
-msgstr "_Spara patch"
-
-#: ../src/giggle-window.c:184
-msgid "Save a patch"
-msgstr "Spara en patch"
-
-#: ../src/giggle-window.c:188
-msgid "_Diff current changes"
-msgstr "_Diffa aktuella ändringar"
-
-#: ../src/giggle-window.c:188
-msgid "Diff current changes"
-msgstr "Diffa aktuella ändringar"
-
-#: ../src/giggle-window.c:192
-msgid "_Quit"
-msgstr "_Avsluta"
-
-#: ../src/giggle-window.c:192
-msgid "Quit the application"
-msgstr "Avsluta programmet"
-
-#: ../src/giggle-window.c:196
-msgid "Edit Personal _Details"
-msgstr "Redigera personliga _uppgifter"
-
-#: ../src/giggle-window.c:196
-msgid "Edit Personal details"
-msgstr "Redigera personliga uppgifter"
-
-#: ../src/giggle-window.c:200
-msgid "_Find..."
-msgstr "_Sök..."
-
-#: ../src/giggle-window.c:200
-msgid "Find..."
-msgstr "Sök..."
-
-#: ../src/giggle-window.c:204
-msgid "Find Ne_xt"
-msgstr "Sök _nästa"
-
-#: ../src/giggle-window.c:204
-msgid "Find next"
-msgstr "Sök nästa"
-
-#: ../src/giggle-window.c:208
-msgid "Find Pre_vious"
-msgstr "Sök _föregående"
-
-#: ../src/giggle-window.c:208
-msgid "Find previous"
-msgstr "Sök föregående"
-
-#: ../src/giggle-window.c:212
-msgid "_About"
-msgstr "_Om"
-
-#: ../src/giggle-window.c:212
-msgid "About this application"
-msgstr "Om detta program"
-
-#: ../src/giggle-window.c:218
-msgid "_Back"
-msgstr "_Bakåt"
-
-#: ../src/giggle-window.c:222
-msgid "_Forward"
-msgstr "_Framåt"
-
-#: ../src/giggle-window.c:226
-msgid "_Refresh"
-msgstr ""
-
-#: ../src/giggle-window.c:367
+#: ../src/giggle-window.c:562
 msgid "About Giggle"
 msgstr "Om Giggle"
 
-#: ../src/giggle-window.c:387
-msgid "Search inside _diffs"
-msgstr "Sök i _diffar"
-
-#: ../src/giggle-window.c:420
+#: ../src/giggle-window.c:587
 #, c-format
 msgid "The directory '%s' does not look like a git repository."
 msgstr "Katalogen \"%s\" ser inte ut som ett GIT-repo."
 
-#: ../src/giggle-window.c:566
-msgid "History"
-msgstr "Historik"
-
-#: ../src/giggle-window.c:584
-msgid "Summary"
-msgstr "Sammanfattning"
-
-#: ../src/giggle-window.c:795
+#: ../src/giggle-window.c:670
 msgid "Select git repository"
 msgstr "Välj GIT-repo"
 
-#: ../src/giggle-window.c:830
+#: ../src/giggle-window.c:706
+#, c-format
+msgid "Properties of %s"
+msgstr "Egenskaper för %s"
+
+#: ../src/giggle-window.c:920
+msgid "translator-credits"
+msgstr "Richard Hult, Kristoffer Grönlund <kristoffer.gronlund@purplescout.se>"
+
+#: ../src/giggle-window.c:921
+msgid "A graphical frontend to the git content tracker."
+msgstr "Ett grafiskt gränssnitt för versionshanteringssystemet git."
+
+#: ../src/giggle-window.c:976
+msgid "_Find..."
+msgstr "_Sök..."
+
+#: ../src/giggle-window.c:977
+msgid "Find..."
+msgstr "Sök..."
+
+#: ../src/giggle-window.c:983
+msgid "Find Ne_xt"
+msgstr "Sök _nästa"
+
+#: ../src/giggle-window.c:984
+#, fuzzy
+msgid "Find next match"
+msgstr "Sök nästa"
+
+#: ../src/giggle-window.c:987
+msgid "Find Pre_vious"
+msgstr "Sök _föregående"
+
+#: ../src/giggle-window.c:988
+#, fuzzy
+msgid "Find previous match"
+msgstr "Sök föregående"
+
+#: ../src/giggle-window.c:994
+msgid "_Project"
+msgstr "_Projekt"
+
+#: ../src/giggle-window.c:995
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: ../src/giggle-window.c:996
+msgid "_Go"
+msgstr "_Gå"
+
+#: ../src/giggle-window.c:997
+msgid "_View"
+msgstr "_Visa"
+
+#: ../src/giggle-window.c:998
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../src/giggle-window.c:1001
+msgid "Open a git repository"
+msgstr "Öppna ett GIT-repo"
+
+#: ../src/giggle-window.c:1006
+msgid "_Save patch"
+msgstr "_Spara patch"
+
+#: ../src/giggle-window.c:1006
+msgid "Save a patch"
+msgstr "Spara en patch"
+
+#: ../src/giggle-window.c:1010
+msgid "_Diff current changes"
+msgstr "_Diffa aktuella ändringar"
+
+#: ../src/giggle-window.c:1010
+msgid "Diff current changes"
+msgstr "Diffa aktuella ändringar"
+
+#: ../src/giggle-window.c:1015
+msgid "Quit the application"
+msgstr "Avsluta programmet"
+
+#: ../src/giggle-window.c:1033
+msgid "Go backward in history"
+msgstr "Gå bakåt i historiken"
+
+#: ../src/giggle-window.c:1037
+msgid "Go forward in history"
+msgstr "Gå framåt i historiken"
+
+#: ../src/giggle-window.c:1041
+msgid "Visit _Homepage"
+msgstr "Besök _Hemsida"
+
+#: ../src/giggle-window.c:1042
+msgid "Visit the homepage of Giggle"
+msgstr "Besök Giggles hemsida"
+
+#: ../src/giggle-window.c:1045
+msgid "Report _Issue"
+msgstr "Rapportera bugg"
+
+#: ../src/giggle-window.c:1046
+msgid "Report an issue you've found in Giggle"
+msgstr "Rapportera en bugg du hittat i Giggle"
+
+#: ../src/giggle-window.c:1050
+msgid "About this application"
+msgstr "Om detta program"
+
+#: ../src/giggle-window.c:1057
+msgid "Show revision tree"
+msgstr "Visa projektträd"
+
+#: ../src/giggle-window.c:1064
+#, fuzzy
+msgid "Show and edit project properties"
+msgstr "Visa projekt_träd"
+
+#: ../src/giggle-window.c:1068
+msgid "Refresh current view"
+msgstr "Uppdatera nuvarande vy"
+
+#: ../src/giggle-window.c:1399
+#, fuzzy
+msgid "Search Inside _Patches"
+msgstr "Sök i _diffar"
+
+#: ../src/giggle-window.c:1671
 msgid "Save patch file"
 msgstr "Spara patchfil"
 
-#: ../src/giggle-window.c:850
+#: ../src/giggle-window.c:1691
 #, c-format
 msgid ""
 "An error occurred when saving to file:\n"
@@ -525,12 +733,62 @@ msgstr ""
 "Ett fel inträffade under filsparande:\n"
 "%s"
 
-#: ../src/giggle-window.c:1071
-msgid "translator-credits"
-msgstr "Richard Hult"
+#: ../plugins/hello-world.xml.h:1
+msgid "Check if the plugin system works"
+msgstr "Testa om pluginsystemet fungerar"
+
+#: ../plugins/hello-world.xml.h:2
+msgid "Demonstration of Giggle's Plugin System"
+msgstr "Demonstration av Giggle's Pluginsystem"
+
+#: ../plugins/hello-world.xml.h:3
+msgid "Hello World"
+msgstr "Hej världen"
+
+#: ../plugins/personal-details.xml.h:1
+#, fuzzy
+msgid "Edit personal details"
+msgstr "Redigera personliga uppgifter"
+
+#: ../plugins/terminal-view.xml.h:1
+#, fuzzy
+msgid "Create _Terminal"
+msgstr "Skapa _tagg"
+
+#: ../plugins/terminal-view.xml.h:2
+msgid "Create new tab in git terminal"
+msgstr "Skapa en ny tab i git-terminalen"
+
+#: ../plugins/terminal-view.xml.h:3
+msgid "Terminal window"
+msgstr "Terminalfönster"
+
+#~ msgid "_Differences"
+#~ msgstr "_Skillnader"
+
+#~ msgid "_Compact Mode"
+#~ msgstr "_Kompakt läge"
+
+#~ msgid "_Open"
+#~ msgstr "_Öppna"
+
+#~ msgid "_Quit"
+#~ msgstr "_Avsluta"
+
+#~ msgid "Edit Personal _Details"
+#~ msgstr "Redigera personliga _uppgifter"
+
+#~ msgid "_About"
+#~ msgstr "_Om"
+
+#~ msgid "_Back"
+#~ msgstr "_Bakåt"
+
+#~ msgid "_Forward"
+#~ msgstr "_Framåt"
 
 #~ msgid "_Diff"
 #~ msgstr "Visa _diff"
+
 #~ msgid "Search string"
 #~ msgstr "Söksträng"
-
