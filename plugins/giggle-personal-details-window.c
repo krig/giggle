@@ -37,6 +37,7 @@ typedef struct GigglePersonalDetailsWindowPriv GigglePersonalDetailsWindowPriv;
 struct GigglePersonalDetailsWindowPriv {
 	GtkWidget       *name_entry;
 	GtkWidget       *email_entry;
+	GtkWidget       *editor_entry;
 
 	GiggleGitConfig *configuration;
 };
@@ -103,6 +104,10 @@ personal_details_window_response (GtkDialog *dialog,
 				     GIGGLE_GIT_CONFIG_FIELD_EMAIL,
 				     gtk_entry_get_text (GTK_ENTRY (priv->email_entry)));
 
+	giggle_git_config_set_field (priv->configuration,
+				     GIGGLE_GIT_CONFIG_FIELD_EDITOR,
+				     gtk_entry_get_text (GTK_ENTRY (priv->editor_entry)));
+
 	giggle_git_config_commit (priv->configuration,
 				  personal_details_configuration_changed_cb,
 				  g_object_ref (dialog));
@@ -160,7 +165,7 @@ personal_details_configuration_updated_cb (GiggleGitConfig *configuration,
 {
 	GigglePersonalDetailsWindow     *window = user_data;
 	GigglePersonalDetailsWindowPriv *priv = GET_PRIV (window);
-	const char			*name, *email;
+	const char			*name, *email, *editor;
 
 #ifdef ENABLE_EDS
 	EContact 			*contact = NULL;
@@ -193,6 +198,7 @@ personal_details_configuration_updated_cb (GiggleGitConfig *configuration,
 
 	name = giggle_git_config_get_field (configuration, GIGGLE_GIT_CONFIG_FIELD_NAME);
 	email = giggle_git_config_get_field (configuration, GIGGLE_GIT_CONFIG_FIELD_EMAIL);
+	editor = giggle_git_config_get_field (configuration, GIGGLE_GIT_CONFIG_FIELD_EDITOR);
 
 #ifdef ENABLE_EDS
 
@@ -212,11 +218,15 @@ personal_details_configuration_updated_cb (GiggleGitConfig *configuration,
 		name = g_get_real_name ();
 	if (!email || !*email)
 		email = g_getenv ("EMAIL");
+	if (!editor || !*editor)
+		editor = "";
 
 	if (name)
 		gtk_entry_set_text (GTK_ENTRY (priv->name_entry), name);
 	if (email)
 		gtk_entry_set_text (GTK_ENTRY (priv->email_entry), email);
+	if (editor)
+		gtk_entry_set_text (GTK_ENTRY (priv->editor_entry), editor);
 
 #ifdef ENABLE_EDS
 
@@ -235,12 +245,19 @@ personal_details_configuration_updated_cb (GiggleGitConfig *configuration,
 }
 
 static void
+giggle_personal_details_editor_clear_cb (GtkEntry* editor,
+	gpointer user_data)
+{
+	gtk_entry_set_text (editor, "");
+}
+
+static void
 giggle_personal_details_window_init (GigglePersonalDetailsWindow *window)
 {
 	GigglePersonalDetailsWindowPriv *priv = GET_PRIV (window);
 	GtkWidget                       *label, *table;
 
-	table = gtk_table_new (2, 2, FALSE);
+	table = gtk_table_new (3, 2, FALSE);
 	gtk_table_set_col_spacings (GTK_TABLE (table), 6);
 	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
 	gtk_container_set_border_width (GTK_CONTAINER (table), 6);
@@ -260,6 +277,17 @@ giggle_personal_details_window_init (GigglePersonalDetailsWindow *window)
 	priv->email_entry = gtk_entry_new ();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), priv->email_entry);
 	gtk_table_attach (GTK_TABLE (table), priv->email_entry, 1, 2, 1, 2, GTK_FILL|GTK_EXPAND, GTK_FILL, 0, 0);
+
+	label = gtk_label_new_with_mnemonic (_("External E_ditor:"));
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
+
+	priv->editor_entry = gtk_entry_new ();
+	gtk_entry_set_icon_from_stock (GTK_ENTRY (priv->editor_entry), GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
+	gtk_entry_set_icon_activatable (GTK_ENTRY (priv->editor_entry), GTK_ENTRY_ICON_SECONDARY, TRUE);
+	g_signal_connect (priv->editor_entry, "activate", G_CALLBACK (giggle_personal_details_editor_clear_cb), NULL);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), priv->editor_entry);
+	gtk_table_attach (GTK_TABLE (table), priv->editor_entry, 1, 2, 2, 3, GTK_FILL|GTK_EXPAND, GTK_FILL, 0, 0);
 
 	gtk_widget_show_all (table);
 	gtk_container_add (GTK_CONTAINER (GTK_DIALOG (window)->vbox), table);

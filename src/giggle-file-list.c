@@ -34,6 +34,7 @@
 #include <libgiggle-git/giggle-git-enums.h>
 #include <libgiggle-git/giggle-git-ignore.h>
 #include <libgiggle-git/giggle-git-list-files.h>
+#include <libgiggle-git/giggle-git-config.h>
 
 #include <glib/gi18n.h>
 #include <string.h>
@@ -41,27 +42,28 @@
 typedef struct GiggleFileListPriv GiggleFileListPriv;
 
 struct GiggleFileListPriv {
-	GiggleGit      *git;
-	GtkIconTheme   *icon_theme;
+	GiggleGit      	*git;
+	GiggleGitConfig *configuration;
+	GtkIconTheme   	*icon_theme;
 
-	GtkTreeStore   *store;
-	GtkTreeModel   *filter_model;
+	GtkTreeStore   	*store;
+	GtkTreeModel   	*filter_model;
 
-	GtkWidget      *popup;
-	GtkUIManager   *ui_manager;
+	GtkWidget      	*popup;
+	GtkUIManager   	*ui_manager;
 
-	GiggleJob      *job;
+	GiggleJob      	*job;
 
-	GtkWidget      *diff_window;
+	GtkWidget      	*diff_window;
 
-	GHashTable     *idle_jobs;
+	GHashTable     	*idle_jobs;
 
-	GiggleRevision *revision_from;
-	GiggleRevision *revision_to;
+	GiggleRevision 	*revision_from;
+	GiggleRevision 	*revision_to;
 
 	guint           show_all : 1;
 
-	char           *selected_path;
+	char           	*selected_path;
 };
 
 typedef struct IdleLoaderData IdleLoaderData;
@@ -150,6 +152,19 @@ file_list_finalize (GObject *object)
 	g_free (priv->selected_path);
 
 	G_OBJECT_CLASS (giggle_file_list_parent_class)->finalize (object);
+}
+
+static void
+file_list_dispose (GObject *object)
+{
+	GiggleFileListPriv *priv = GET_PRIV (object);
+
+	if (priv->configuration) {
+		g_object_unref (priv->configuration);
+		priv->configuration = NULL;
+	}
+
+	G_OBJECT_CLASS (giggle_file_list_parent_class)->dispose (object);
 }
 
 static void
@@ -479,6 +494,7 @@ giggle_file_list_class_init (GiggleFileListClass *class)
 	GtkTreeViewClass *tree_view_class = GTK_TREE_VIEW_CLASS (class);
 
 	object_class->finalize           = file_list_finalize;
+	object_class->dispose            = file_list_dispose;
 	object_class->get_property       = file_list_get_property;
 	object_class->set_property       = file_list_set_property;
 
@@ -713,13 +729,23 @@ file_list_edit_file (GtkAction      *action,
 	GList              *selection, *l;
 	GAppLaunchContext  *context;
 	const char         *dir;
+	const gchar        *editor;
 
 	context = giggle_create_app_launch_context (GTK_WIDGET (list));
 	selection = giggle_file_list_get_selection (list);
 	dir = giggle_git_get_directory (priv->git);
 
+	editor = giggle_git_config_get_field (priv->configuration,
+					      GIGGLE_GIT_CONFIG_FIELD_EDITOR);
+
 	for (l = selection; l; l = g_list_delete_link (l, l)) {
-		giggle_open_file_with_context (context, dir, l->data);
+		if (!editor || !(*editor)) {
+			giggle_open_file_with_context (context, dir, l->data);
+		}
+		else {
+			giggle_open_file_using_application (context, dir,
+							    editor, l->data);
+		}
 		g_free (l->data);
 	}
 
@@ -1460,6 +1486,8 @@ giggle_file_list_init (GiggleFileList *list)
 			  G_CALLBACK (file_list_directory_changed), list);
 	g_signal_connect_swapped (priv->git, "changed",
 				  G_CALLBACK (file_list_files_status_changed), list);
+
+	priv->configuration = giggle_git_config_new ();
 
 	priv->icon_theme = gtk_icon_theme_get_default ();
 

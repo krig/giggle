@@ -210,6 +210,57 @@ giggle_open_file_with_context (GAppLaunchContext *context,
 }
 
 void
+giggle_open_file_using_application (GAppLaunchContext *context,
+				    const char        *directory,
+				    const char        *application,
+				    const char        *filename)
+{
+	GAppInfo *appinfo = NULL;
+	GError   *error   = NULL;
+	char     *path    = NULL;
+	GFile    *file    = NULL;
+	GList    *files   = NULL;
+
+	g_return_if_fail (G_IS_APP_LAUNCH_CONTEXT (context));
+	g_return_if_fail (NULL != application);
+	g_return_if_fail (NULL != filename);
+
+	if (!directory)
+		directory = giggle_git_get_directory (giggle_git_get ());
+
+	g_return_if_fail (NULL != directory);
+
+	appinfo = g_app_info_create_from_commandline (application,
+						      NULL,
+						      G_APP_INFO_CREATE_NONE,
+						      &error);
+	if (!appinfo) {
+		g_warning ("%s: %s", G_STRFUNC, error->message);
+		g_clear_error (&error);
+		giggle_open_file_with_context(context, directory,
+					      filename);
+		return;
+	}
+
+	path = g_build_filename (directory, filename, NULL);
+	file = g_file_new_for_path (path);
+
+	files = g_list_append (files, file);
+
+	if (!g_app_info_launch (appinfo,
+				files,
+				context,
+				&error)) {
+		g_warning ("%s: %s", G_STRFUNC, error->message);
+		g_clear_error (&error);
+	}
+
+	g_free (path);
+	g_object_unref (file);
+	g_list_free (files);
+}
+
+void
 giggle_open_file (GtkWidget  *widget,
 		  const char *directory,
 		  const char *filename)

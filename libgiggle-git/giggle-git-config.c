@@ -40,6 +40,8 @@ static const struct {
 	{ "user.name", TRUE },
 	[GIGGLE_GIT_CONFIG_FIELD_EMAIL] =
 	{ "user.email", TRUE },
+	[GIGGLE_GIT_CONFIG_FIELD_EDITOR] =
+	{ "giggle.user.editor", TRUE },
 
 	[GIGGLE_GIT_CONFIG_FIELD_MAIN_WINDOW_MAXIMIZED] =
 	{ "giggle.main-window-maximized", TRUE },

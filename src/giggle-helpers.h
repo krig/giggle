@@ -42,6 +42,11 @@ void                giggle_open_file_with_context         (GAppLaunchContext *co
 							   const char        *directory,
 							   const char        *filename);
 
+void                giggle_open_file_using_application    (GAppLaunchContext *context,
+							   const char        *directory,
+							   const char        *application,
+							   const char        *filename);
+
 void                giggle_open_file                      (GtkWidget         *widget,
 							   const char        *directory,
 							   const char        *filename);
