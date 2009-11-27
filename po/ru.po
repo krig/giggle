@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: giggle 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-25 18:23+0100\n"
+"POT-Creation-Date: 2009-11-28 00:50+0100\n"
 "PO-Revision-Date: 2009-11-25 12:51+0300\n"
 "Last-Translator: Trukhachev Alexey <trukhachev@gmail.com>\n"
 "Language-Team: Trukhachev Alexey <trukhachev@gmail.com>\n"
@@ -43,23 +43,27 @@ msgstr "URL:"
 msgid "Cannot find plugin description in '%s'"
 msgstr "Не могу найти описание плагина в '%s'"
 
-#: ../plugins/giggle-personal-details-window.c:82
+#: ../plugins/giggle-personal-details-window.c:83
 msgid "There was an error setting the configuration"
 msgstr ""
 
-#: ../plugins/giggle-personal-details-window.c:184
+#: ../plugins/giggle-personal-details-window.c:189
 msgid "There was an error getting the configuration"
 msgstr ""
 
-#: ../plugins/giggle-personal-details-window.c:248
+#: ../plugins/giggle-personal-details-window.c:265
 msgid "_Name:"
 msgstr "_Имя:"
 
-#: ../plugins/giggle-personal-details-window.c:256
+#: ../plugins/giggle-personal-details-window.c:273
 msgid "_Email:"
 msgstr "_Электронная почта:"
 
-#: ../plugins/giggle-personal-details-window.c:267
+#: ../plugins/giggle-personal-details-window.c:281
+msgid "External E_ditor:"
+msgstr ""
+
+#: ../plugins/giggle-personal-details-window.c:295
 #: ../plugins/personal-details.xml.h:2
 msgid "Personal Details"
 msgstr "Персональная информация"
@@ -127,7 +131,7 @@ msgstr ""
 msgid "Branches:"
 msgstr "Ветви:"
 
-#: ../src/giggle-diff-tree-view.c:142 ../src/giggle-file-list.c:1675
+#: ../src/giggle-diff-tree-view.c:142 ../src/giggle-file-list.c:1703
 #, c-format
 msgid ""
 "An error occurred when retrieving different files list:\n"
@@ -166,14 +170,14 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/giggle-file-list.c:394
+#: ../src/giggle-file-list.c:409
 #, c-format
 msgid ""
 "An error occurred when retrieving the file list:\n"
 "%s"
 msgstr ""
 
-#: ../src/giggle-file-list.c:767
+#: ../src/giggle-file-list.c:793
 #, c-format
 msgid ""
 "An error occurred when adding a file to git:\n"
@@ -182,71 +186,71 @@ msgstr ""
 "Произошла ошибка при добавлении файла в Git:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:827 ../src/giggle-file-list.c:853
+#: ../src/giggle-file-list.c:853 ../src/giggle-file-list.c:879
 #: ../src/giggle-rev-list-view.c:1184 ../src/giggle-rev-list-view.c:1215
 #, c-format
 msgid "Could not save the patch as %s"
 msgstr "Не удалось сохранить патч как %s"
 
-#: ../src/giggle-file-list.c:832 ../src/giggle-file-list.c:858
+#: ../src/giggle-file-list.c:858 ../src/giggle-file-list.c:884
 #: ../src/giggle-rev-list-view.c:1192 ../src/giggle-rev-list-view.c:1220
 msgid "No error was given"
 msgstr ""
 
-#: ../src/giggle-file-list.c:879 ../src/giggle-rev-list-view.c:1246
+#: ../src/giggle-file-list.c:905 ../src/giggle-rev-list-view.c:1246
 #, c-format
 msgid "Patch saved as %s"
 msgstr "Патч сохранен в %s"
 
-#: ../src/giggle-file-list.c:883 ../src/giggle-rev-list-view.c:1250
+#: ../src/giggle-file-list.c:909 ../src/giggle-rev-list-view.c:1250
 #, c-format
 msgid "Created in project directory"
 msgstr "Создан в каталоге проекта"
 
-#: ../src/giggle-file-list.c:886 ../src/giggle-rev-list-view.c:1253
+#: ../src/giggle-file-list.c:912 ../src/giggle-rev-list-view.c:1253
 #, c-format
 msgid "Created in directory %s"
 msgstr "Создан в каталоге %s"
 
-#: ../src/giggle-file-list.c:921 ../src/giggle-rev-list-view.c:1306
+#: ../src/giggle-file-list.c:947 ../src/giggle-rev-list-view.c:1306
 msgid "Create Patch"
 msgstr "Создать патч"
 
-#: ../src/giggle-file-list.c:1024
+#: ../src/giggle-file-list.c:1050
 msgid "Delete glob pattern?"
 msgstr ""
 
-#: ../src/giggle-file-list.c:1027
+#: ../src/giggle-file-list.c:1053
 msgid ""
 "The selected file was shadowed by a glob pattern that may be hiding other "
 "files, delete it?"
 msgstr ""
 
-#: ../src/giggle-file-list.c:1423
+#: ../src/giggle-file-list.c:1449
 msgid "_Commit Changes"
 msgstr "Состояние и_зменений"
 
-#: ../src/giggle-file-list.c:1425
+#: ../src/giggle-file-list.c:1451
 msgid "A_dd file to repository"
 msgstr "Добавить файл в _репозиторий"
 
-#: ../src/giggle-file-list.c:1426 ../src/giggle-rev-list-view.c:1660
+#: ../src/giggle-file-list.c:1452 ../src/giggle-rev-list-view.c:1660
 msgid "Create _Patch"
 msgstr "_Создать патч"
 
-#: ../src/giggle-file-list.c:1427
+#: ../src/giggle-file-list.c:1453
 msgid "_Add to .gitignore"
 msgstr "_Добавить в .gitignore"
 
-#: ../src/giggle-file-list.c:1428
+#: ../src/giggle-file-list.c:1454
 msgid "_Remove from .gitignore"
 msgstr "_Переместить из .gitignore"
 
-#: ../src/giggle-file-list.c:1432
+#: ../src/giggle-file-list.c:1458
 msgid "_Show all files"
 msgstr "Показать _все файлы"
 
-#: ../src/giggle-file-list.c:1471
+#: ../src/giggle-file-list.c:1499
 msgid "Project"
 msgstr "Проект"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-04 18:40+0100\n"
+"POT-Creation-Date: 2009-11-28 00:50+0100\n"
 "PO-Revision-Date: 2009-02-23 21:47+0100\n"
 "Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
@@ -43,23 +43,27 @@ msgstr "URL:"
 msgid "Cannot find plugin description in '%s'"
 msgstr "Nie można odnaleźć opisu wtyczki w %s"
 
-#: ../plugins/giggle-personal-details-window.c:82
+#: ../plugins/giggle-personal-details-window.c:83
 msgid "There was an error setting the configuration"
 msgstr "Wystąpił bład w czasie zapisywania konfiguracji"
 
-#: ../plugins/giggle-personal-details-window.c:184
+#: ../plugins/giggle-personal-details-window.c:189
 msgid "There was an error getting the configuration"
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji"
 
-#: ../plugins/giggle-personal-details-window.c:248
+#: ../plugins/giggle-personal-details-window.c:265
 msgid "_Name:"
 msgstr "_Nazwa:"
 
-#: ../plugins/giggle-personal-details-window.c:256
+#: ../plugins/giggle-personal-details-window.c:273
 msgid "_Email:"
 msgstr "_E-mail:"
 
-#: ../plugins/giggle-personal-details-window.c:267
+#: ../plugins/giggle-personal-details-window.c:281
+msgid "External E_ditor:"
+msgstr ""
+
+#: ../plugins/giggle-personal-details-window.c:295
 #: ../plugins/personal-details.xml.h:2
 msgid "Personal Details"
 msgstr "Informacje osobiste"
@@ -126,7 +130,7 @@ msgstr ""
 msgid "Branches:"
 msgstr "Gałęzie:"
 
-#: ../src/giggle-diff-tree-view.c:142 ../src/giggle-file-list.c:1675
+#: ../src/giggle-diff-tree-view.c:142 ../src/giggle-file-list.c:1703
 #, c-format
 msgid ""
 "An error occurred when retrieving different files list:\n"
@@ -169,7 +173,7 @@ msgstr ""
 "Wysąpił błąd podczas zatwierdzania:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:394
+#: ../src/giggle-file-list.c:409
 #, c-format
 msgid ""
 "An error occurred when retrieving the file list:\n"
@@ -178,7 +182,7 @@ msgstr ""
 "Wystąpił błąd podczas pobierania listy plików:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:767
+#: ../src/giggle-file-list.c:793
 #, c-format
 msgid ""
 "An error occurred when adding a file to git:\n"
@@ -187,41 +191,41 @@ msgstr ""
 "Wystąpił błąd podczas dodawania pliku do git:\n"
 "%s"
 
-#: ../src/giggle-file-list.c:827 ../src/giggle-file-list.c:853
+#: ../src/giggle-file-list.c:853 ../src/giggle-file-list.c:879
 #: ../src/giggle-rev-list-view.c:1184 ../src/giggle-rev-list-view.c:1215
 #, c-format
 msgid "Could not save the patch as %s"
 msgstr "Nie można zapisać łatki jako %s"
 
-#: ../src/giggle-file-list.c:832 ../src/giggle-file-list.c:858
+#: ../src/giggle-file-list.c:858 ../src/giggle-file-list.c:884
 #: ../src/giggle-rev-list-view.c:1192 ../src/giggle-rev-list-view.c:1220
 msgid "No error was given"
 msgstr "Nie zwrócono błędu"
 
-#: ../src/giggle-file-list.c:879 ../src/giggle-rev-list-view.c:1246
+#: ../src/giggle-file-list.c:905 ../src/giggle-rev-list-view.c:1246
 #, c-format
 msgid "Patch saved as %s"
 msgstr "Łatka została zapisana jako %s"
 
-#: ../src/giggle-file-list.c:883 ../src/giggle-rev-list-view.c:1250
+#: ../src/giggle-file-list.c:909 ../src/giggle-rev-list-view.c:1250
 #, c-format
 msgid "Created in project directory"
 msgstr "Utworzono w katalogu projektu"
 
-#: ../src/giggle-file-list.c:886 ../src/giggle-rev-list-view.c:1253
+#: ../src/giggle-file-list.c:912 ../src/giggle-rev-list-view.c:1253
 #, c-format
 msgid "Created in directory %s"
 msgstr "Utworzono w katalogu %s"
 
-#: ../src/giggle-file-list.c:921 ../src/giggle-rev-list-view.c:1306
+#: ../src/giggle-file-list.c:947 ../src/giggle-rev-list-view.c:1306
 msgid "Create Patch"
 msgstr "Utwórz _łatkę"
 
-#: ../src/giggle-file-list.c:1024
+#: ../src/giggle-file-list.c:1050
 msgid "Delete glob pattern?"
 msgstr "Usunąć wzorzec?"
 
-#: ../src/giggle-file-list.c:1027
+#: ../src/giggle-file-list.c:1053
 msgid ""
 "The selected file was shadowed by a glob pattern that may be hiding other "
 "files, delete it?"
@@ -229,31 +233,31 @@ msgstr ""
 "Zaznaczony plik jest przesłoniony przez wzorzec, który może ukrywać inne "
 "pliki, usunąć ten wzorzec?"
 
-#: ../src/giggle-file-list.c:1423
+#: ../src/giggle-file-list.c:1449
 msgid "_Commit Changes"
 msgstr "_Zatwierdź zmiany"
 
-#: ../src/giggle-file-list.c:1425
+#: ../src/giggle-file-list.c:1451
 msgid "A_dd file to repository"
 msgstr "_Dodaj plik do repozytorium"
 
-#: ../src/giggle-file-list.c:1426 ../src/giggle-rev-list-view.c:1660
+#: ../src/giggle-file-list.c:1452 ../src/giggle-rev-list-view.c:1660
 msgid "Create _Patch"
 msgstr "_Utwórz łatkę"
 
-#: ../src/giggle-file-list.c:1427
+#: ../src/giggle-file-list.c:1453
 msgid "_Add to .gitignore"
 msgstr "D_odaj do .gitignore"
 
-#: ../src/giggle-file-list.c:1428
+#: ../src/giggle-file-list.c:1454
 msgid "_Remove from .gitignore"
 msgstr "_Usuń z .gitignore"
 
-#: ../src/giggle-file-list.c:1432
+#: ../src/giggle-file-list.c:1458
 msgid "_Show all files"
 msgstr "_Wyświetlaj wszystkie pliki"
 
-#: ../src/giggle-file-list.c:1471
+#: ../src/giggle-file-list.c:1499
 msgid "Project"
 msgstr "Projekt"
 
