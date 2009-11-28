@@ -906,6 +906,7 @@ window_action_about_cb (GtkAction    *action,
 {
 	const gchar *authors[] = {
 		"Carlos Garnacho",
+		"Kristoffer Grönlund",
 		"Mathias Hasselmann",
 		"Mikael Hallendal",
 		"Richard Hult",
